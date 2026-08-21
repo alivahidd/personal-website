@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Mona Moradi — filmmaker and multidisciplinary artist." />
+    <title>Mona Moradi — filmmaker</title>
+    <link rel="stylesheet" href="./site.css" />
+  </head>
+  <body>
+    <a class="skip" href="#works">Skip to work</a>
+    <header class="nav">
+      <a class="brand" href="#top">Mona Moradi</a>
+      <div class="mark" aria-hidden="true"><i></i><i></i><b></b><b></b><b></b><b></b><b></b></div>
+      <nav aria-label="Primary"><a href="#works">▷ Work ↓</a><a href="#about">□ About</a><a href="#contact">○ Contact</a></nav>
+    </header>
+    <main id="top">
+      <section class="hero">
+        <img src="./assets/project-blue-room.png" alt="Cinematic placeholder still: an empty blue-lit room" />
+        <div class="shade"></div>
+        <p class="role">Filmmaker<br />&amp; multidisciplinary artist</p>
+        <h1>Mona<br />Moradi</h1>
+        <p class="caption">Selected moving-image work<br />and visual projects</p>
+      </section>
+      <section class="intro" id="about">
+        <p class="eyebrow">Behind the work</p>
+        <h2>Mona works across filmmaking, writing, performance, and visual projects—using moving image to build atmosphere before explanation.</h2>
+        <p class="note">Bio and project credits to be added.</p>
+      </section>
+      <section class="works" id="works">
+        <div class="works-head"><p class="eyebrow">Selected work</p><h2>Selected work<sup>[3]</sup></h2></div>
+        <div class="grid">
+          <button class="card" data-project="blue"><span class="thumb"><img src="./assets/project-blue-room.png" alt="Blue-lit room placeholder still" /><em>View project ↗</em></span><span class="meta"><span>Film / placeholder</span><span>—</span></span><strong>Untitled Blue Room</strong></button>
+          <button class="card" data-project="soft"><span class="thumb"><img src="./assets/project-fabric.png" alt="Soft fabric placeholder still" /><em>View project ↗</em></span><span class="meta"><span>Moving image / placeholder</span><span>—</span></span><strong>Soft Boundaries</strong></button>
+          <button class="card" data-project="theatre"><span class="thumb"><img src="./assets/theatre-placeholder.png" alt="Theatre placeholder still" /><em>View project ↗</em></span><span class="meta"><span>Performance / placeholder</span><span>—</span></span><strong>After Theatre</strong></button>
+        </div>
+      </section>
+      <section class="contact" id="contact"><p class="eyebrow">Contact</p><h2>For projects<br />and conversations.</h2><p>Contact details to be added.</p><span>© Mona Moradi</span></section>
+    </main>
+    <dialog id="project-dialog" aria-labelledby="project-title">
+      <button class="close" aria-label="Close project">×</button>
+      <div class="dialog-info"><p class="eyebrow" id="project-type"></p><h2 id="project-title"></h2><p class="year">[—]</p><p>Project details, credits, and final video are available in the managed portfolio.</p><a class="visit" href="https://mona-moradi-film.alivahid.chatgpt.site" target="_blank" rel="noreferrer">View managed portfolio ↗</a></div>
+      <img id="project-image" alt="" />
+    </dialog>
+    <script>
+      const projects = { blue: ['Untitled Blue Room', 'Film / placeholder', './assets/project-blue-room.png'], soft: ['Soft Boundaries', 'Moving image / placeholder', './assets/project-fabric.png'], theatre: ['After Theatre', 'Performance / placeholder', './assets/theatre-placeholder.png'] };
+      const dialog = document.querySelector('#project-dialog');
+      document.querySelectorAll('[data-project]').forEach((card) => card.addEventListener('click', () => { const item = projects[card.dataset.project]; document.querySelector('#project-title').textContent = item[0]; document.querySelector('#project-type').textContent = item[1]; const image = document.querySelector('#project-image'); image.src = item[2]; image.alt = item[0] + ' placeholder still'; dialog.showModal(); }));
+      document.querySelector('.close').addEventListener('click', () => dialog.close());
+      dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
+    </script>
+  </body>
+</html>
