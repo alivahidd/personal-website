@@ -1,0 +1,9 @@
+import Link from "next/link";
+import { getPortfolioItems } from "./portfolio";
+
+export const dynamic = "force-dynamic";
+
+export default async function Home() {
+  const works = await getPortfolioItems();
+  return <main><a className="skip-link" href="#works">Skip to work</a><header className="nav"><Link href="/" className="brand">Mona Moradi</Link><div className="mark" aria-hidden="true"><i /><i /><b /><b /><b /><b /><b /></div><nav aria-label="Primary"><a href="#works">▷ Work ↓</a><a href="#about">□ About</a><a href="#contact">○ Contact</a></nav></header><section className="hero"><img src="/assets/project-blue-room.png" alt="Original placeholder cinematic still: an empty blue-lit room" /><div className="shade" /><p className="role">Filmmaker<br />&amp; multidisciplinary artist</p><h1>Mona<br />Moradi</h1><p className="caption">Original visual placeholder<br />for portfolio art direction</p></section><section className="intro" id="about"><p className="overline">Behind the work</p><h2>Mona works across filmmaking, writing, performance, and visual projects—using moving image to build atmosphere before explanation.</h2><p className="note">Bio and project credits to be added.</p></section><section id="works" className="index"><div className="indexhead"><p className="overline">Selected work</p><h2>Selected work<sup>[{works.length}]</sup></h2></div><div className="grid">{works.map((work) => <Link className="card" href={`/works/${work.slug}`} key={work.id}><div className="thumb"><img src={work.heroImage} alt={`Project still for ${work.title}`} loading="lazy" /><span>View project ↗</span></div><div className="meta"><span>{work.type}</span><span>{work.year}</span></div><h3>{work.title}</h3></Link>)}</div></section><section className="contact" id="contact"><p className="overline">Contact</p><h2>For projects<br />and conversations.</h2><p>Contact details to be added.</p><span>© Mona Moradi</span></section></main>;
+}
